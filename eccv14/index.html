@@ -1,0 +1,197 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>ECCV2014</title>
+	</head>
+	<body>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tbody>
+				<tr>
+					<td width="800">
+						<div align="center">
+							<p><i><font size="3" face="Palatino Linotype" -weight:lighter>European Conference on Computer Vision 2014</i></p>
+							<h1><font size="7" face="Palatino Linotype">Real-Time Exemplar-Based Face Sketch Synthesis</h1>
+							<h3>
+							<b>
+							<a href="http://www.cs.cityu.edu.hk/~yibisong/"><font size="4" face="Palatino Linotype">Yibing Song</a><sup><font size="2">1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="https://scholar.google.com/citations?user=xQZMbkUAAAAJ&hl=zh-CN"><font size="4" face="Palatino Linotype">Linchao Bao</a><sup><font size="2">1</sup>&nbsp;&nbsp;&nbsp;&nbsp;							
+							<a href="https://scholar.google.com/citations?user=4WirkacAAAAJ&hl=zh-CN"><font size="4" face="Palatino Linotype">Qingxiong Yang</a><sup><font size="2">1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="https://scholar.google.com/citations?user=p9-ohHsAAAAJ"><font size="4" face="Palatino Linotype">Ming-Hsuan Yang</a><sup><font size="2">2</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+							</b>
+							<div align="center">
+							<br>
+							<br>
+							<sup><font size="2">1</sup>							
+							<b><a><font size="4" face="Palatino Linotype">City University of Hong Kong</a></b>
+							<br>						
+							<sup><font size="2">2</sup>							
+							<b><a><font size="4" face="Palatino Linotype">University of California at Merced</a></b>
+							</div>
+							</h3>
+							<br>
+							<img src="motivation.png" width="960" border="0">
+							</br>														
+						</div>
+						<div align="left">
+						<p><font size="6"><b>Topic Background</b></p>
+						<hr/>
+						<p><font size="4">Sketch synthesis is trying to simulate the hand drawing style of artist on generating new images automatically. Existing methods like PhotoShop produce sketch effect according to image edges, which is suitable for normal images. However these methods commonly fail to capture important facial details, which would be sensitive to human beings. So the generated sketches are more like the input images rather than artist work. To solve this problem a training dataset is involved which contains photo-sketch pairs. The output sketch is reconstructed from training sketches through mapping functions learned from input and training photos.</p>
+						</div>
+						<br>
+						<br>
+						<div align="left">
+						<p><font size="6" align="left"><b>Spotlight</b></p>
+						<hr/>						
+						<table>
+						<tr align="left">
+						<td>
+						<font size="4">Prior art methods</a>
+						</td>
+						<td>
+						: Sparse patches represent face photo
+						</td>
+						<td>
+						+ KNN search for sketch patch selection
+						</td>
+						<td>
+						+ Global sketch patch optimization using Markov Random Field.
+						</td>						
+						</tr>
+						
+						<tr align="left">
+						<td>
+						<font size="4">Proposed</a>
+						</td>
+						<td>
+						: Dense patches represent face photo
+						</td>
+						<td>
+						+ KNN search for sketch patch selection
+						</td>
+						<td>
+						+ Spatial / Temporal sketch denoising.
+						</td>						
+						</tr>						
+						</table>
+						
+						<p>
+						<font size="4">Contributions:				
+						<br><font size="4" color="red">1: More efficient than prior art on CPU.				
+						<br><font size="4" color="red">2: The first method to enable real-time performance on GPU.
+						<br><font size="4" color="red">3: The first method to enable temporal coherence for video sketch synthesis.
+						</p>
+						</div>
+						<br>
+						<br>
+						<div>
+						<p><font size="6" color="black"><b>Demo</b></p>
+						<hr/>
+						
+						<div align="center">
+						<table>
+						<tr align="center">
+						<td>
+						<iframe width="1280" height="720" src="//www.youtube.com/embed/_tcAFWEewLU?rel=0" frameborder="0" allowfullscreen></iframe>
+						</td>						
+						</tr>
+						<tr align="center">
+						<td>
+						<span><a href="demo.mp4">Download demo (16.14 MB)</a></span>
+						</td>						
+						</tr>
+						</table>		
+						</div>
+						
+						</div>
+						<p><font size="4"></p>
+						<br>
+						<br>
+						<div>
+						<p><font size="6" color="black"><b>Downloads</b></p>
+						<hr/>
+						
+						<div align="left">
+						<table>						
+						<tr align="left">
+						<td>
+						<font size="4"><a href="slides.pptx">[Slides.pptx]</a>
+						</td>
+						<td>
+						: Slides containing animation are provided to illustrate the proposed framework
+						</td>	
+						</tr>
+						
+						<tr align="left">
+						<td>
+						<font size="4"><a href="song_eccv14_sketch.pdf">[Paper.pdf]</a>
+						</td>
+						<td>
+						: The paper
+						</td>
+						</tr>
+						
+						<tr align="left">
+						<td>
+						<font size="4"><a href="source_code.zip"><font color="red">[Code.zip]</a>
+						</td>
+						<td>
+						: A self-contained C++ implementation in VS2012. Training dataset is also included. We also provide our implementation of MRF sketch synthesis <font size="4"><a href="https://pan.baidu.com/s/1IH6yTIv5GugFurHDg-SyzQ"><font color="red">here</font></a>.
+						</td>
+						</tr>		
+
+						<tr align="left">
+						<td>
+						<font size="4"><a href="https://pan.baidu.com/s/1usRJS2AekuxZw85pGNJrEQ"><font color="red">[Demo.zip]</a>
+						</td>
+						<td>
+						: CPU based webcam input live face sketch synthesis plus color rendering. You can try it on your side.
+						</td>
+						</tr>							
+						
+						<tr align="left">
+						<td>
+						<font size="4"><a href="https://pan.baidu.com/s/1G73rignwSFHOiTmOgk245A">[Results.zip]</a>
+						</td>
+						<td>
+						: Complete result of state-of-the-art methods on the benchmark dataset
+						</td>
+						</tr>
+						
+						<tr align="left">
+						<td>
+						<font size="4"><a href="poster.jpg">[Poster.jpg]</a>
+						</td>
+						<td>
+						: The poster
+						</td>
+						</tr>
+						
+						</table>		
+						</div>					
+						</div>
+						
+						<br>
+						<br>
+						
+						<div align="left">
+						<p><font size="6" color="black"><b>BibTex</b> <a href="http://link.springer.com/chapter/10.1007%2F978-3-319-10599-4_51">(DOI)</a></p>						
+						<hr/>						
+						<font size="4">
+						@inproceedings{song_eccv14_sketch,<br>
+						&nbsp;&nbsp;&nbsp;author = {Song, Yibing and Bao, Linchao and Yang, Qingxiong and Yang, Ming-Hsuan},<br>
+						&nbsp;&nbsp;&nbsp;title = {Real-Time Exemplar-Based Face Sketch Synthesis},<br>
+						&nbsp;&nbsp;&nbsp;booktitle = {Proceedings of European Conference on Computer Vision},<br>
+						&nbsp;&nbsp;&nbsp;pages={800-813},<br>
+						&nbsp;&nbsp;&nbsp;year = {2014},<br>
+						&nbsp;&nbsp;&nbsp;}
+						</div>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<br>
+	<br>	
+	<hr/>
+	<p><font size="4">Last update: 08/10/2014</p>
+	</body>
+</html>
