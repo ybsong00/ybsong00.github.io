@@ -30,12 +30,112 @@ body {
 </head>
 
 <body>
+<h4 align="center"><i><font size="1" face="Palatino Linotype">IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2018</font></i></h4>
+
 <table align="center">
 <td align="center">
-<h2>VITAL: VIsual Tracking via Adversarial Learning</h2>
-<p>Coming soon...</p>
+<h1>VITAL: VIsual Tracking via Adversarial Learning</h1>
+<h3>
+<a href="http://ybsong00.github.io"><font size="3">Yibing Song</font></a><sup><font size="2">1</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=syoPhv8AAAAJ&hl=en"><font size="3">Chao Ma</font></a><sup><font size="2">2</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=SluULSIAAAAJ&hl=en"><font size="3">Xiaohe Wu</font></a><sup><font size="2">3</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=CvmpmS0AAAAJ&hl=en"><font size="3">Lijun Gong</font></a><sup><font size="2">4</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=xQZMbkUAAAAJ&hl=en"><font size="3">Linchao Bao</font></a><sup><font size="2">1</font></sup>
+<br>
+<a href="https://scholar.google.com/citations?user=rUOpCEYAAAAJ&hl=en"><font size="3">Wangmeng Zuo</font></a><sup><font size="2">3</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=Ljk2BvIAAAAJ&hl=en"><font size="3">Chunhua Shen</font></a><sup><font size="2">2</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=KilQqKYAAAAJ&hl=en"><font size="3">Rynson Lau</font></a><sup><font size="2">5</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=p9-ohHsAAAAJ&hl=en"><font size="3">Ming-Hsuan Yang</font></a><sup><font size="2">6</font></sup>
+</h3>
+
+<br>
+<sup><font size="2">1</font></sup>							
+<b><a><font size="3">Tencent AI Lab</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">2</sup>							
+<b><a><font size="3">The University of Adelaide</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">3</sup>							
+<b><a><font size="3">Harbin Institute of Technology</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">4</sup>							
+<b><a><font size="3">Tencent</font></a></b>
+<br>
+<sup><font size="2">5</sup>							
+<b><a><font size="3">City University of Hong Kong</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">6</sup>							
+<b><a><font size="3">University of California at Merced</font></a></b>
 </td>
 </table>
+
+<br>
+<br>
+<table align="center">
+<tr>
+	<td align="center"><img border=0 height=336 width=960 src="pipeline.png"></td>
+</tr>
+</table>
+
+<br>
+<h2><p><font size="5"><b>Abstract</b></font></p></h2>
+<hr/>
+<p><font size="3" face="Palatino Linotype">The tracking-by-detection framework consists of two stages, i.e., drawing samples around the target object in the first stage and classifying each sample as the target object or as background in the second stage. The performance of existing trackers using deep classification networks is limited by two aspects. First, the positive samples in each frame are highly spatially overlapped, and they fail to capture rich appearance variations. Second, there exists extreme class imbalance between positive and negative samples. This paper presents the VITAL algorithm to address these two problems via adversarial learning. To augment positive samples, we use a generative network to randomly generate masks, which are applied to adaptively dropout input features to capture a variety of appearance changes. With the use of adversarial learning, our network identifies the mask that maintains the most robust features of the target objects over a long temporal span. In addition, to handle the issue of class imbalance, we propose a high-order cost sensitive loss to decrease the effect of easy negative samples to facilitate training the classification network. Extensive experiments on benchmark datasets demonstrate that the proposed tracker performs favorably against state-of-the-art approaches.</font></p>
+
+<br>
+<h2><p><font size="5"><b>Demo</b></font></p></h2>
+<br>
+<table>
+<tr align="center">
+<td>
+<iframe width="1080" height="608" src="https://www.youtube.com/embed/uGMoOom6_90" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</td>						
+</tr>
+</table>
+
+<br>
+<h2><p><font size="5"><b>Downloads</b></font></p></h2>
+<hr/>
+<div align="left">
+		<table>						
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://arxiv.org/abs/1708.00225">[VITAL.pdf]</font></a>
+		</td>
+		<td>
+		: The paper.
+		</td>	
+		</tr>	
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://arxiv.org/abs/1708.00225">[Results.zip]</font></a>
+		</td>
+		<td>
+		: The OPE results on the OTB2013, OTB2015 and VOT2016 benchmarks.
+		</td>	
+		</tr>
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://github.com/ybsong00/Vital_release">[Code.zip]</font></a>
+		</td>
+		<td>
+		: Available on Github.
+		</td>	
+		</tr>
+		</table>
+</div>
+<br>
+<br>
+
+
+<h2><p><font size="5" color="black"><b>BibTex</b>&nbsp(DOI)</p></h2>	
+<hr/>								
+<font size="3">
+@inproceedings{song-cvpr18-VITAL,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;author = {Song, Yibing and Ma, Chao and Wu, Xiaohe and Gong, Lijun and Bao, Linchao and Zuo, Wangmeng and Shen, Chunhua and Rynson, Lau and Yang, Ming-Hsuan},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title = {VITAL: VIsual Tracking via Adversarial Learning},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},<br>				
+&nbsp;&nbsp;&nbsp;&nbsp;year = {2018},<br>
+&nbsp;&nbsp;}
+</font>
 
 </body>
 
