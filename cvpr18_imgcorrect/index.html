@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DRHT</title>
+
+<style media="screen" type="text/css">
+body
+{
+  border: 0pt none;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0pt;
+  outline-color: invert;
+  outline-style: none;
+  outline-width: 0pt;
+  padding: 0pt;
+  vertical-align: baseline;
+}
+body {
+  position: relative;
+  margin: 3em auto 2em auto;
+  width: 1080px;
+  font-family: Times New Roman, Lato, Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  background: #fdfdfd;
+}
+</style>
+</head>
+
+<body>
+
+<table align="center">
+<td align="center">
+<h1>Image Correction via Deep Reciprocating HDR Transformation</h1>
+</td>
+</table>
+
+<br>
+<br>
+<table align="center">
+<tr>
+	<td align="center"><img border=0 height=172 width=720 src="intuition.png"></td>	
+</tr>
+<tr>
+	<td align="center"><img border=0 height=270 width=960 src="pipeline.png"></td>	
+</tr>
+</table>
+
+
+<br>
+<h2><p><font size="5"><b>Abstract</b></font></p></h2>
+<hr/>
+<p><font size="3" face="Palatino Linotype">Image correction aims to adjust an input image into a visually pleasing one. Existing approaches are proposed mainly from the perspective of image pixel manipulation. They are not effective to recover the details in the under/over exposed regions. In this paper, we revisit the image formation procedure and notice that the missing details in these regions exist in the corresponding high dynamic range (HDR) data. These details are well perceived by the human eyes but diminished in the low dynamic range (LDR) domain because of the tone mapping process. Therefore, we formulate the image correction task as an HDR transformation process and propose a novel approach called Deep Reciprocating HDR Transformation (DRHT). Given an input LDR image, we first reconstruct the missing details in the HDR domain. We then perform tone mapping on the predicted HDR data to generate the output LDR image with the recovered details. To this end, we propose a united framework consisting of two CNNs for HDR reconstruction and tone mapping. They are integrated end-to-end for joint training and prediction. Experiments on the standard benchmarks demonstrate that the proposed method performs favorably against state-of-the-art image correction methods.</font></p>
+
+
+<br>
+<h2><p><font size="5"><b>Downloads</b></font></p></h2>
+<hr/>
+<div align="left">
+		<table>						
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://arxiv.org/abs/1708.00225">[DRHT.pdf]</font></a>
+		</td>
+		<td>
+		: The paper.
+		</td>	
+		</tr>	
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="results.zip">[Results.zip]</font></a>
+		</td>
+		<td>
+		: Experimental results.
+		</td>	
+		</tr>
+							
+		</table>
+</div>
+<br>
+<br>
+
+
+<h2><p><font size="5" color="black"><b>BibTex</b>&nbsp(DOI)</p></h2>	
+<hr/>								
+<font size="3">
+@inproceedings{yang-cvpr18-DRHT,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;author = {Yang, Xin and Xu, Ke and Song, Yibing and Zhang, Qiang and Wei, Xiaopeng and Rynson, Lau},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title = {Image Correction via Deep Reciprocating HDR Transformation},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},<br>				
+&nbsp;&nbsp;&nbsp;&nbsp;year = {2018},<br>
+&nbsp;&nbsp;}
+</font>
+
+
+</body>
+
+</html>
