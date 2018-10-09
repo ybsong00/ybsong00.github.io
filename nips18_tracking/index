@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAT</title>
+
+<style media="screen" type="text/css">
+body
+{
+  border: 0pt none;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0pt;
+  outline-color: invert;
+  outline-style: none;
+  outline-width: 0pt;
+  padding: 0pt;
+  vertical-align: baseline;
+}
+body {
+  position: relative;
+  margin: 3em auto 2em auto;
+  width: 1080px;
+  font-family: Times New Roman, Lato, Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  background: #fdfdfd;
+}
+</style>
+</head>
+
+<body>
+<h4 align="center"><i><font size="1" face="Palatino Linotype">Conference on Neural Information Processing Systems (NIPS) 2018</font></i></h4>
+
+<table align="center">
+<td align="center">
+<h1>Deep Attentive Tracking via Reciprocative Learning</h1>
+<h3>
+<a><font size="3">Shi Pu</font></a><sup><font size="2">1</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://ybsong00.github.io"><font size="3">Yibing Song</font></a><sup><font size="2">2</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=syoPhv8AAAAJ&hl=en"><font size="3">Chao Ma</font></a><sup><font size="2">3</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://www.pris.net.cn/en/876-2"><font size="3">Honggang Zhang</font></a><sup><font size="2">1</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=p9-ohHsAAAAJ&hl=en"><font size="3">Ming-Hsuan Yang</font></a><sup><font size="2">4</font></sup>
+</h3>
+
+<br>
+<sup><font size="2">1</font></sup>							
+<b><a><font size="3">Beijing University of Posts and Telecommunications</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">2</sup>							
+<b><a><font size="3">Tencent AI Lab</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<sup><font size="2">3</sup>							
+<b><a><font size="3">The University of Adelaide</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">4</sup>							
+<b><a><font size="3">University of California at Merced</font></a></b>
+</td>
+</table>
+
+<br>
+<br>
+<table align="center">
+<tr>
+	<td align="center"><img border=0 height=320 width=971 src="pipeline.png"></td>
+</tr>
+</table>
+
+<br>
+<h2><p><font size="5"><b>Abstract</b></font></p></h2>
+<hr/>
+<p><font size="3" face="Palatino Linotype">Visual attention, derived from cognitive neuroscience, facilitates human perception on the most pertinent subset of the sensory data. Recently, significant efforts have been made to exploit attention schemes to advance computer vision systems. For visual tracking, it is often challenging to track target objects undergoing large appearance changes. Attention maps facilitate visual tracking by selectively paying attention to temporal robust features. Existing tracking-by-detection approaches mainly use additional attention modules to generate feature weights as the classifiers are not equipped with such mechanisms. In this paper, we propose a reciprocative learning algorithm to exploit visual attention for training deep classifiers. The proposed algorithm consists of feed-forward and backward operations to generate attention maps, which serve as regularization terms coupled with the original classification loss function for training. The deep classifier learns to attend to the regions of target objects robust to appearance changes. Extensive experiments on large-scale benchmark datasets show that the proposed attentive tracking method performs favorably against the state-of-the-art approaches.</font></p>
+
+<br>
+<h2><p><font size="5"><b>Demo</b></font></p></h2>
+<br>
+<table>
+<tr align="center">
+<td>
+<iframe width="1080" height="608" src="https://www.youtube.com/embed/uGMoOom6_90" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</td>						
+</tr>
+</table>
+
+<br>
+<h2><p><font size="5"><b>Downloads</b></font></p></h2>
+<hr/>
+<div align="left">
+		<table>						
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://arxiv.org/abs/1804.04273">[DAT.pdf]</font></a>
+		</td>
+		<td>
+		: The paper.
+		</td>	
+		</tr>				
+		
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="results.zip">[Results.zip]</font></a>
+		</td>
+		<td>
+		: The OPE results on the OTB2013, OTB2015 and VOT2016 benchmarks.
+		</td>	
+		</tr>
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://github.com/shipubupt/NIPS2018">[Code.zip]</font></a>
+		</td>
+		<td>
+		: Available on Github.
+		</td>	
+		</tr>
+		</table>
+</div>
+<br>
+<br>
+
+
+<h2><p><font size="5" color="black"><b>BibTex</b>&nbsp(DOI)</p></h2>	
+<hr/>								
+<font size="3">
+@inproceedings{shi-nips18-DAT,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;author = {Pu, Shi and Song, Yibing and Ma, Chao and Zhang, Honggang and Yang, Ming-Hsuan},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title = {Deep Attentive Tracking via Reciprocative Learning},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;booktitle = {Neural Information Processing Systems},<br>				
+&nbsp;&nbsp;&nbsp;&nbsp;year = {2018},<br>
+&nbsp;&nbsp;}
+</font>
+
+</body>
+
+</html>
