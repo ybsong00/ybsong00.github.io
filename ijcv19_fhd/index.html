@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FHD</title>
+
+<style media="screen" type="text/css">
+body
+{
+  border: 0pt none;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0pt;
+  outline-color: invert;
+  outline-style: none;
+  outline-width: 0pt;
+  padding: 0pt;
+  vertical-align: baseline;
+}
+body {
+  position: relative;
+  margin: 3em auto 2em auto;
+  width: 1080px;
+  font-family: Times New Roman, Lato, Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  background: #fdfdfd;
+}
+</style>
+</head>
+
+<body>
+<h4 align="center"><i><font size="1" face="Palatino Linotype">International Journal of Computer Vision (IJCV) 2019</font></i></h4>
+
+<table align="center">
+<td align="center">
+<h1>Joint Face Hallucination and Deblurring via Structure Generation and Detail Enhancement</h1>
+<h3>
+<a href="http://ybsong00.github.io"><font size="3">Yibing Song</font></a><sup><font size="2">1</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=0GTpIAIAAAAJ&hl=zh-CN"><font size="3">Jiawei Zhang</font></a><sup><font size="2">2</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=CvmpmS0AAAAJ&hl=en"><font size="3">Lijun Gong</font></a><sup><font size="2">3</font></sup>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=rBWnK8wAAAAJ&hl=en"><font size="3">Shengfeng He</font></a><sup><font size="2">4</font></sup>
+<br>
+<a href="https://scholar.google.com/citations?user=xQZMbkUAAAAJ&hl=en"><font size="3">Linchao Bao</font></a><sup><font size="2">1</font></sup>
+<a href="https://scholar.google.com/citations?user=CMsNjGIAAAAJ&hl=en"><font size="3">Jinshan Pan</font></a><sup><font size="2">5</font></sup>
+<a href="https://scholar.google.com/citations?user=4WirkacAAAAJ&hl=en"><font size="3">Qingxiong Yang</font></a><sup><font size="2">6</font></sup>
+<a href="https://scholar.google.com/citations?user=p9-ohHsAAAAJ&hl=en"><font size="3">Ming-Hsuan Yang</font></a><sup><font size="2">7</font></sup>
+</h3>
+
+<br>
+<sup><font size="2">1</font></sup>							
+<b><a><font size="3">Tencent AI Lab</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">2</sup>							
+<b><a><font size="3">SenseTime Research</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">3</sup>							
+<b><a><font size="3">Tencent</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">4</sup>							
+<b><a><font size="3">South China University of Technology</font></a></b>
+<br>
+<sup><font size="2">5</sup>							
+<b><a><font size="3">Nanjing University of Science and Technology</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">6</sup>							
+<b><a><font size="3">University of Science and Technology of China</font></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+<sup><font size="2">7</sup>							
+<b><a><font size="3">University of California at Merced</font></a></b>
+</td>
+</table>
+
+<br>
+<br>
+<table align="center">
+<tr>
+	<td align="center"><img border=0 height=385 width=886 src="pipeline.png"></td>
+</tr>
+</table>
+
+<br>
+<h2><p><font size="5"><b>Abstract</b></font></p></h2>
+<hr/>
+<p><font size="3" face="Palatino Linotype">We address the problem of restoring a high-resolution face image from a blurry low-resolution input. This problem is difficult as super-resolution and deblurring need to be tackled simultaneously. Moreover, existing algorithms cannot handle face images well as low-resolution face images do not have much texture which is especially critical for deblurring. In this paper, we propose an effective algorithm by utilizing the domain-specific knowledge of human faces to recover high-quality faces. We first propose a facial component guided deep Convolutional Neural Network (CNN) to restore a coarse face image, which is denoted as the base image where the facial component is automatically generated from the input face image. However, the CNN based method cannot handle image details well. We further develop a novel exemplar-based detail enhancement algorithm via facial component matching. Extensive experiments show that the proposed method outperforms the state-of-the-art algorithms both quantitatively and qualitatively.</font></p>
+
+<br>
+<h2><p><font size="5"><b>Downloads</b></font></p></h2>
+<hr/>
+<div align="left">
+		<table>						
+		<tr align="left">
+		<td>
+		<font size="3"><a href="https://arxiv.org/abs/1804.04273">[VITAL.pdf]</font></a>
+		</td>
+		<td>
+		: The paper.
+		</td>	
+		</tr>						
+							
+		<tr align="left">
+		<td>
+		<font size="3"><a href="results.zip">[Results.zip]</font></a>
+		</td>
+		<td>
+		: The OPE results on the OTB2013, OTB2015 and VOT2016 benchmarks.
+		</td>	
+		</tr>
+									
+		</table>
+</div>
+<br>
+<br>
+
+
+<h2><p><font size="5" color="black"><b>BibTex</b>&nbsp(DOI)</p></h2>	
+<hr/>								
+<font size="3">
+@inproceedings{song-ijcv19-FHD,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;author = {Song, Yibing and Zhang, Jiawei and Gong, Lijun and He, Shengfeng and Bao, Linchao and Pan, Jinshan and Yang, Qingxiong and Yang, Ming-Hsuan},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title = {Joint Face Hallucination and Deblurring via Structure Generation and Detail Enhancement},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;booktitle = {International Journal of Computer Vision},<br>				
+&nbsp;&nbsp;&nbsp;&nbsp;year = {2019},<br>
+&nbsp;&nbsp;}
+</font>
+
+</body>
+
+</html>
