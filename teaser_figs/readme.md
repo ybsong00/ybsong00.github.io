@@ -1,6 +1,6 @@
 
 
-| [![图像1](image1.jpg "im1")]| Description |
+| [![图像1](image1.png "im1")]| Description |
 | ----------- | ----------- |
 | Header      | Title       |
 | Paragraph   | Text        |
