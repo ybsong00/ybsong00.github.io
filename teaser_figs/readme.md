@@ -17,6 +17,6 @@
 
 
 | <video id="video" controls="" preload="none" poster="封面">
-	<source id="video1.mpt" src="mp4 格式视频" type="video/mp4">
+	<source id="video1.mp4" src="mp4 格式视频" type="video/mp4">
 </videos> ||
 | ----------- | ----------- |
