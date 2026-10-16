@@ -1,0 +1,47 @@
+name: Update homepage data
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-homepage-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Either source may fail (Scholar blocks datacenter IPs); the scripts
+      # then exit non-zero and leave the committed file untouched.
+      - name: Fetch Google Scholar citation count
+        run: python scripts/update_citations.py
+        continue-on-error: true
+
+      - name: Fetch Hugging Face trending tokens
+        run: python scripts/update_tokens.py
+        continue-on-error: true
+
+      - name: Commit updated data
+        run: |
+          if [ -f citations.json ]; then git add citations.json; fi
+          if [ -f tokens.json ]; then git add tokens.json; fi
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update citations and trending tokens"
+          # checkout runs in detached HEAD, so push explicitly to master
+          git push origin HEAD:refs/heads/master
