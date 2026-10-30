@@ -839,33 +839,30 @@ html.js [data-reveal].revealed { opacity: 1; transform: none; }
   var running = !reduced;
 
   var LEXICON_CAP = 40;
-  // Symbols listed first so they survive truncation when the feed is large.
-  var BASE_LEXICON = [
-    "<think>", "</think>", "<bos>", "<eos>", "λ", "∇",
-    "RLVR", "RSI", "o1", "R1", "CoT", "GRPO", "MCTS", "RLAIF", "reasoning",
-    "agentic", "MCP", "tool use", "long CoT", "thinking", "reward model",
-    "verifier", "self-play", "test-time", "scaling", "distill", "RL",
-    "SFT", "DPO", "PRM", "ORM", "PRIME", "VLM", "LLM", "MoE", "SWE-agent"
+  // Stopgap only: fills the canvas while the rolling window is thin or the
+  // feed is down. Real content comes from tokens.json's `recent` window.
+  var SEED_LEXICON = [
+    "reasoning", "agentic", "RLVR", "GRPO", "CoT", "MoE", "distillation",
+    "verifier", "reward model", "test-time", "multimodal", "diffusion"
   ];
-  var LEXICON = BASE_LEXICON.slice();
+  var LEXICON = SEED_LEXICON.slice();
   var COLORS = ["155,140,255", "56,210,238", "244,114,182"];
   var MONO = "px ui-monospace, Menlo, Consolas, monospace";
 
   fetch("tokens.json", { cache: "no-store" })
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (d) {
-      var list = d && d.tokens;
-      if (!Array.isArray(list)) return;
+      var list = Array.isArray(d.recent) && d.recent.length ? d.recent
+               : (Array.isArray(d.tokens) ? d.tokens : null);
+      if (!list) return;
       var fresh = [];
       list.slice(0, LEXICON_CAP).forEach(function (t) {
         if (typeof t !== "string") return;
         t = t.trim();
-        if (/^[A-Za-z0-9 <>/λ∇-]{1,24}$/.test(t) && fresh.indexOf(t) < 0) fresh.push(t);
+        if (/^[A-Za-z0-9 -]{1,24}$/.test(t) && fresh.indexOf(t) < 0) fresh.push(t);
       });
       if (!fresh.length) return;
-      // Trending terms win; the static list backfills so the canvas stays full
-      // when the feed is stale or missing.
-      LEXICON = fresh.concat(BASE_LEXICON.filter(function (t) {
+      LEXICON = fresh.concat(SEED_LEXICON.filter(function (t) {
         return fresh.indexOf(t) < 0;
       })).slice(0, LEXICON_CAP);
       if (reduced) {

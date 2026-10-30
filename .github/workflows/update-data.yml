@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
+    inputs:
+      backfill_days:
+        description: "Seed the rolling lexicon from this many previous days of papers"
+        required: false
+        default: "0"
 
 permissions:
   contents: write
@@ -34,6 +39,8 @@ jobs:
 
       - name: Fetch Hugging Face trending tokens
         id: tokens
+        env:
+          BACKFILL_DAYS: ${{ github.event.inputs.backfill_days || '0' }}
         run: python scripts/update_tokens.py
         continue-on-error: true
 
