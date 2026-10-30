@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from collections import Counter
@@ -112,10 +113,17 @@ def backfill_history(history, days):
     today = datetime.now(timezone.utc).date()
     for offset in range(days, 0, -1):
         day = today - timedelta(days=offset)
-        try:
-            _, data = fetch_feed(f"{URL}?date={day.isoformat()}")
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError):
+        data = None
+        for attempt in range(2):
+            try:
+                _, data = fetch_feed(f"{URL}?date={day.isoformat()}")
+                break
+            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError):
+                time.sleep(4)
+        if data is None:
             continue
+        # the API rate-limits bursts, and a skipped day silently shrinks the window
+        time.sleep(2)
         for term in ranked_terms(extract(titles_from(data))):
             if term not in history:
                 history.append(term)
