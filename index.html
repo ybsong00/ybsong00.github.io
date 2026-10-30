@@ -838,13 +838,16 @@ html.js [data-reveal].revealed { opacity: 1; transform: none; }
   var RADIUS = 220;
   var running = !reduced;
 
-  var LEXICON = [
+  var LEXICON_CAP = 40;
+  // Symbols listed first so they survive truncation when the feed is large.
+  var BASE_LEXICON = [
+    "<think>", "</think>", "<bos>", "<eos>", "λ", "∇",
     "RLVR", "RSI", "o1", "R1", "CoT", "GRPO", "MCTS", "RLAIF", "reasoning",
     "agentic", "MCP", "tool use", "long CoT", "thinking", "reward model",
     "verifier", "self-play", "test-time", "scaling", "distill", "RL",
-    "SFT", "DPO", "PRM", "ORM", "PRIME", "VLM", "LLM", "MoE", "SWE-agent",
-    "<think>", "</think>", "<bos>", "<eos>", "λ", "∇"
+    "SFT", "DPO", "PRM", "ORM", "PRIME", "VLM", "LLM", "MoE", "SWE-agent"
   ];
+  var LEXICON = BASE_LEXICON.slice();
   var COLORS = ["155,140,255", "56,210,238", "244,114,182"];
   var MONO = "px ui-monospace, Menlo, Consolas, monospace";
 
@@ -853,11 +856,18 @@ html.js [data-reveal].revealed { opacity: 1; transform: none; }
     .then(function (d) {
       var list = d && d.tokens;
       if (!Array.isArray(list)) return;
-      list.slice(0, 60).forEach(function (t) {
+      var fresh = [];
+      list.slice(0, LEXICON_CAP).forEach(function (t) {
         if (typeof t !== "string") return;
         t = t.trim();
-        if (/^[A-Za-z0-9 <>/λ∇-]{1,24}$/.test(t) && LEXICON.indexOf(t) < 0) LEXICON.push(t);
+        if (/^[A-Za-z0-9 <>/λ∇-]{1,24}$/.test(t) && fresh.indexOf(t) < 0) fresh.push(t);
       });
+      if (!fresh.length) return;
+      // Trending terms win; the static list backfills so the canvas stays full
+      // when the feed is stale or missing.
+      LEXICON = fresh.concat(BASE_LEXICON.filter(function (t) {
+        return fresh.indexOf(t) < 0;
+      })).slice(0, LEXICON_CAP);
       if (reduced) {
         initTokens();
         draw();
