@@ -23,9 +23,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      # continue-on-error only keeps one dead source from blocking the other.
-      # "Report source status" re-checks the raw outcomes below so a failure
-      # still turns the run red instead of passing silently for weeks.
+      # continue-on-error keeps one dead source from blocking the other and from
+      # blocking the commit. "Report source status" judges health on data
+      # freshness rather than per-run outcome, so an intermittent Scholar miss
+      # warns instead of failing the run every day.
       - name: Fetch Google Scholar citation count
         id: citations
         run: python scripts/update_citations.py
@@ -74,18 +75,29 @@ jobs:
           CITATIONS: ${{ steps.citations.outcome }}
           TOKENS: ${{ steps.tokens.outcome }}
         run: |
+          # Scholar rejects datacenter IPs intermittently and the script keeps the
+          # last good value, so a single miss is noise. Sustained staleness is not.
+          stale_days=$(python -c "import json,pathlib,datetime;p=pathlib.Path('citations.json');print(9999 if not p.exists() else (datetime.datetime.now(datetime.timezone.utc).date()-datetime.date.fromisoformat(json.loads(p.read_text())['updated'])).days)" 2>/dev/null || echo 9999)
+
           {
             echo "## Homepage data sources"
             echo ""
-            echo "| Source | Outcome |"
-            echo "| --- | --- |"
-            echo "| Google Scholar citations | $CITATIONS |"
-            echo "| Hugging Face trending tokens | $TOKENS |"
-            echo ""
-            echo "The precise failure reason is in each failed step's annotation."
+            echo "| Source | This run | Note |"
+            echo "| --- | --- | --- |"
+            echo "| Google Scholar citations | $CITATIONS | citations.json is ${stale_days}d old |"
+            echo "| Hugging Face trending tokens | $TOKENS | updated daily |"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [ "$CITATIONS" != "success" ] || [ "$TOKENS" != "success" ]; then
-            echo "At least one data source failed."
+          if [ "$TOKENS" != "success" ]; then
+            echo "::error title=Data pipeline::Hugging Face token fetch failed. This source has been reliable, so investigate."
             exit 1
+          fi
+
+          if [ "$stale_days" -gt 7 ]; then
+            echo "::error title=Data pipeline::citations.json is ${stale_days} days old. Scholar has been unreachable for over a week; consider switching source."
+            exit 1
+          fi
+
+          if [ "$CITATIONS" != "success" ]; then
+            echo "::warning title=Data pipeline::Scholar rejected this run (expected intermittently from datacenter IPs). Keeping the previous count; citations.json is ${stale_days}d old."
           fi
